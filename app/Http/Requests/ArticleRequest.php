@@ -35,4 +35,5 @@ class ArticleRequest extends FormRequest
             'title' => 'タイトル',
             'body' => '本文',
         ];
+    }
 }
