@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Article::class, 'article');
+    }
+    
     public function index()
     {
         $articles = Article::all()->sortByDesc('created_at');
@@ -50,4 +55,11 @@ class ArticleController extends Controller
         return redirect()->route('articles.index');
     }
     //==========ここまで追加==========
+
+    //-- ここから追加
+    public function show(Article $article)
+    {
+        return view('articles.show', ['article' => $article]);
+    }
+    //-- ここまで追加
 }
